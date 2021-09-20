@@ -1,0 +1,11 @@
+export default {
+    mongo: {
+        uri: '',
+        config: {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            useFindAndModify: false,
+        }
+    },
+    port: 4001
+}

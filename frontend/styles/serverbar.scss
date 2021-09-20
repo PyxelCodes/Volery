@@ -1,0 +1,8 @@
+@use 'globals';
+
+.serverbar {
+    width: 80px;
+    height: 100%;
+    background-color: globals.$secondary-color;
+    border-right: 1px solid globals.$border-color;
+}

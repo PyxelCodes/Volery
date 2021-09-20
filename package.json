@@ -1,0 +1,19 @@
+{
+    "name": "volery",
+    "private": true,
+    "workspaces": {
+        "packages": [
+            "frontend",
+            "api"
+        ],
+        "nohoist": [
+            "**"
+        ]
+    },
+    "devDependencies": {
+        "@types/jest": "^26.0.23"
+    },
+    "scripts": {
+        "prepare": "husky install"
+    }
+}

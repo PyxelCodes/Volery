@@ -1,0 +1,14 @@
+version: "3"
+
+services: 
+  # api
+  api:
+    build: ./api
+    #environment: 
+    ports:
+    - 4001:4001
+
+  frontend:
+    build: ./frontend
+    labels: 
+      volery.description: "Frontend Service"
