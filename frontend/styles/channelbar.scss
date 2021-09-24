@@ -1,0 +1,130 @@
+@use "globals";
+
+.channelbar {
+  width: 250px;
+
+  position: absolute;
+  top: 0;
+  margin-left: 80px;
+  border: none;
+  border-radius: 1.3rem;
+  background-color: #3b4252;
+  height: 100%;
+
+  .community-info {
+    border-radius: 1.3rem 1.3rem 0 0;
+    border-bottom: 1px solid globals.$border-color;
+    background-color: globals.$third-color;
+    font-size: 10px;
+    font-weight: 400;
+    padding: 10px;
+    white-space: nowrap;
+    color: #dedede;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .channel {
+    &:hover {
+      background-color: globals.$primary-color;
+      border-left: 2px solid #7289da;
+    }
+    .content {
+      border-radius: 0;
+      margin-left: 0;
+      padding-top: 1px;
+      padding-left: 12px;
+      padding-bottom: 1px;
+      border-left: solid 2px #0000;
+      .linkmanager {
+        flex: 1 1 auto;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        min-width: 0;
+        padding: 6px 0;
+        cursor: pointer;
+        .name {
+          color: #fff;
+          font-weight: 500;
+          opacity: 0.3;
+          font-size: 16px;
+          line-height: 20px;
+          flex: 1 1 auto;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          transition: opacity 200ms ease-in-out;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+.category {
+  cursor: pointer;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  .categoryheader {
+    .openicon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      margin-left: -12px;
+      .arrow-svg {
+        opacity: 0;
+        transition: 200ms opacity ease-in-out;
+        width: 12px;
+        height: 12px;
+      }
+    }
+    &:hover {
+      .openicon {
+        .arrow-svg {
+          opacity: 1;
+        }
+      }
+    }
+
+    user-select: none;
+    padding-left: 12px;
+    opacity: 0.2;
+    transform: 200ms opacity ease-in-out;
+    display: flex;
+    &:hover {
+      opacity: 1;
+    }
+    flex: 1 1 auto;
+    overflow: hidden;
+    .text {
+      font-weight: 500;
+      color: #fff !important;
+      letter-spacing: 0.6px;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      text-transform: uppercase;
+      font-size: 12px;
+      line-height: 16px;
+      letter-spacing: 0.25px;
+      font-weight: 600;
+      -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+      .innerText {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        position: relative;
+      }
+    }
+  }
+}

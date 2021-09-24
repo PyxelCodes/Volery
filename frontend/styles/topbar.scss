@@ -1,0 +1,13 @@
+@use "globals";
+
+.topbar {
+  position: absolute;
+  top: 0;
+  margin-left: 335px;
+  background-color: globals.$third-color;
+  width: calc(100% - 340px);
+  border-radius: 1.3rem 1.3rem 0 0;
+  padding: 0 20px;
+  height: 63px;
+  border-bottom: 1px solid globals.$border-color;
+}

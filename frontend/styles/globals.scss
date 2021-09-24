@@ -1,14 +1,16 @@
 $font-stack: Helvetica, sans-serif;
 
-$primary-color: #161e2d;
-$secondary-color: #222c45;
-$btn-primary-color: #2e3956;
+$primary-color: #2E3440;
+$secondary-color: #3B4252;
+$third-color: #434C5E;
+$btn-primary-color: #4C566A;
 $hover-color: #4d2b37;
-$border-color: #2d374e;
+$border-color: #4C566A;
 
 html,
 body {
   padding: 0;
+  top: 0;
   margin: 0;
   font: 100% $font-stack;
   background-color: $primary-color;
@@ -16,7 +18,9 @@ body {
 }
 
 #__next {
+  margin-top: -16px; // idk whats wrong with nextjs but it needs this
   height: 100%;
+  top: 0;
 }
 
 a {
