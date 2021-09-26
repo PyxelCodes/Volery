@@ -4,10 +4,6 @@ import { Connection, User } from "./types";
 import { connect } from "./connect";
 import { baseURL, gatewayURL } from "../../constants/urls";
 
-interface WebSocketProviderProps {
-  shouldConnect: boolean;
-}
-
 type V = Connection | null;
 
 export const WebSocketContext = React.createContext<{

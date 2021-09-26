@@ -1,0 +1,12 @@
+@use 'globals';
+
+.textarea {
+    background-color: #3b4252;
+    position: absolute;
+    bottom: 0;
+    margin-left: 335px;
+    height: calc(8%);
+    width: calc(100% - 340px);
+    border-top: 1px solid globals.$border-color;
+    border-radius: 0 0 1.3rem 1.3rem;
+}

@@ -1,12 +1,13 @@
-export const TextChannel = ({
-  channel,
-  setChannel,
-}: {
-  channel: any;
-  setChannel: any;
-}) => {
+import { useContext } from "react";
+import { fetchMessagesFor } from "../../lib/fetchMessagesFor";
+import { UserStateContext } from "../ws/UserStateProvider";
+
+export const TextChannel = ({ channel }) => {
+
+  let { setCurrentChannel } = useContext(UserStateContext);
+
   let clickManager = () => {
-    setChannel(channel);
+    setCurrentChannel(channel);
   };
   return (
     <div className="channel">

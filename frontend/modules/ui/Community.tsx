@@ -1,15 +1,13 @@
-export const Community = ({
-  c,
-  isActive,
-  setCommunity,
-}: {
-  c: any;
-  isActive: boolean;
-  setCommunity: any;
-}) => {
+import { useContext } from "react";
+import { UserStateContext } from "../ws/UserStateProvider";
+
+export const Community = ({ c, isActive }: { c: any; isActive: boolean }) => {
+  let context = useContext(UserStateContext);
+  let { setCurrentCommunity } = context;
+  
   let onClick = () => {
     console.log("switching to guild " + c.id);
-    setCommunity(c);
+    setCurrentCommunity(c);
   };
 
   if (!c.icon) {

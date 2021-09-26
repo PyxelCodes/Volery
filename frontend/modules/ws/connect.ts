@@ -69,6 +69,15 @@ export const connect = ({
 
                         listeners.push(listener);
                     },
+                    on: (opcode, handler) => {
+                        const listener = { opcode, handler } as Listener<unknown>
+
+                        listeners.push(listener)
+                    },
+                    off: (opcode, handler) => {
+                        const listener = { opcode, handler } as Listener<unknown>
+                        listeners.splice(listeners.indexOf(listener), 1);
+                    },
                     addListener: (opcode, handler) => {
                         const listener = { opcode, handler } as Listener<unknown>;
 
@@ -82,8 +91,9 @@ export const connect = ({
 
                 resolve(connection);
             } else {
+
                 listeners
-                    .filter(({ opcode }) => opcode == message.op)
+                    .filter(({ opcode }) => opcode == message.t)
                     .forEach(it =>
                         it.handler(message.d)
                     )
@@ -96,7 +106,14 @@ export const connect = ({
                 if (socket.readyState === socket.CLOSED) {
                     clearInterval(id);
                 } else {
+                    let sentAt = Date.now();
                     socket.send(JSON.stringify({ op: 1 })); // HEARTBEAT
+                    let onMessage = (m) => {
+                        if (JSON.parse(m.data).op !== 11) return;
+                        console.log(`Heartbeat ack from gateway, latency: ${Date.now() - sentAt}ms`)
+                        socket.removeEventListener('message', onMessage)
+                    };
+                    socket.addEventListener('message', onMessage)
                 }
             }, heartbeatInterval);
         });

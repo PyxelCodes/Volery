@@ -11,7 +11,6 @@ export const WaitForWsAndAuth = ({ children }) => {
     APIRequest("/auth", { noVersion: true })
       .then((x) => {
         setAuthed(true);
-        console.log(x);
       })
       .catch((x) => console.log("failed", x));
   }, []);

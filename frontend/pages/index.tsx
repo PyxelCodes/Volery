@@ -1,36 +1,65 @@
 import { useState, useEffect, useContext } from "react";
 import { Serverbar } from "../modules/ui/Serverbar";
-import { getUser } from "../modules/fetch/user";
-import { User } from "../types/user";
 import { SecondSidebar } from "../modules/ui/SecondSidebar";
-import { WebSocketContext } from "../modules/ws/WebSocketProvider";
 import { Topbar } from "../modules/ui/Topbar";
 import { Messages } from "../modules/ui/Messages";
+import { UserStateContext } from "../modules/ws/UserStateProvider";
+import { TextArea } from "../modules/ui/TextArea";
+import { loadThemes } from "../themes/loadThemes";
+import { setupPluginApi } from "../plugins/setup";
 
 export default function Home() {
-  let ws = useContext(WebSocketContext);
   let [loading, setLoading] = useState(true);
-  let [currentCommunity, setCommunity] = useState(null);
-  let [currentChannel, setChannel] = useState(null);
+
+  let {
+    currentChannel,
+    currentCommunity,
+    communities,
+    setCurrentCommunity,
+    setCurrentChannel,
+  } = useContext(UserStateContext);
 
   useEffect(() => {
+    if (!loading) return;
+    // load last channel & community here
+    let lastCommunity = localStorage.getItem("last-community");
+    let lastChannel = localStorage.getItem("last-channel");
+
+    let c = communities.find((x) => x.id == lastCommunity);
+
+    if (!c) {
+      localStorage.removeItem("last-community");
+      localStorage.removeItem("last-channel");
+    } else {
+      setCurrentCommunity(c);
+      console.log("found a community last in use, relaunching");
+      let ch = c.channels.find((x) => x.id == lastChannel);
+      if (!ch) {
+        localStorage.removeItem("last-channel");
+      } else {
+        setCurrentChannel(ch);
+        console.log("found a channel last in use, relaunching");
+      }
+    }
+
     // load plugins and themes etc here
+
+    loadThemes();
+
+    setupPluginApi();
+    
     setLoading(false);
-  }, []);
+  }, [communities, loading, setCurrentChannel, setCurrentCommunity]);
 
   if (loading) return <p> loading </p>;
 
   return (
     <>
-      <Serverbar
-        activeCId={currentCommunity?.id ?? ""}
-        setCommunity={setCommunity}
-      />
-      {currentCommunity && (
-        <SecondSidebar c={currentCommunity} setChannel={setChannel} />
-      )}
-      {currentChannel && <Topbar channel={currentChannel} />}
+      <Serverbar />
+      {currentCommunity && <SecondSidebar />}
+      {currentChannel && <Topbar />}
       {currentChannel && <Messages />}
+      {currentChannel && <TextArea />}
     </>
   );
 }

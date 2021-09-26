@@ -1,4 +1,4 @@
-$font-stack: Helvetica, sans-serif;
+$font-stack: 'Roboto', sans-serif;
 
 $primary-color: #2E3440;
 $secondary-color: #3B4252;
@@ -12,7 +12,7 @@ body {
   padding: 0;
   top: 0;
   margin: 0;
-  font: 100% $font-stack;
+  //font: 100% $font-stack;
   background-color: $primary-color;
   height: 100%;
 }
@@ -30,4 +30,28 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+
+li {
+  list-style-type: none;
+}
+
+.markdown{
+  height: inherit;
+}
+
+
+code {
+  width: auto;
+  height: auto;
+  padding: .2em;
+  margin: -.2em 0;
+  border-radius: 3px;
+  font-size: 85%;
+  font-family: Consolas,Andale Mono WT,Andale Mono,Lucida Console,Lucida Sans Typewriter,DejaVu Sans Mono,Bitstream Vera Sans Mono,Liberation Mono,Nimbus Mono L,Monaco,Courier New,Courier,monospace;
+  text-indent: 0;
+  border: none;
+  white-space: pre-wrap;
+  background: #2f3136;
 }

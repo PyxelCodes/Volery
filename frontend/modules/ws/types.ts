@@ -29,6 +29,14 @@ export type Connection = {
         opcode: Opcode,
         handler: ListenerHandler<Data>
     ) => void;
+    on: <Data = unknown>(
+        opcode: Opcode,
+        handler: ListenerHandler<Data>
+    ) => void;
+    off: <Data = unknown>(
+        opcode: Opcode,
+        handler: ListenerHandler<Data>
+    ) => void;
     addListener: <Data = unknown>(
         opcode: Opcode,
         handler: ListenerHandler<Data>

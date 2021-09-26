@@ -1,10 +1,13 @@
 import { WaitForWsAndAuth } from "../modules/auth/WaitForWsAndAuth";
 import { WebSocketProvider } from "../modules/ws/WebSocketProvider";
+import { useState } from "react";
 import "../styles/globals.scss";
 import "../styles/serverbar.scss";
 import "../styles/channelbar.scss";
 import "../styles/topbar.scss";
-import '../styles/message.scss'
+import "../styles/message.scss";
+import '../styles/textarea.scss'
+import { UserStateProvider } from "../modules/ws/UserStateProvider";
 
 declare global {
   export interface Window {
@@ -40,7 +43,9 @@ export default function Volery({ Component, pageProps }) {
     <Prepare>
       <WebSocketProvider>
         <WaitForWsAndAuth>
-          <Component {...pageProps} />
+          <UserStateProvider>
+            <Component {...pageProps} />
+          </UserStateProvider>
         </WaitForWsAndAuth>
       </WebSocketProvider>
     </Prepare>

@@ -1,30 +1,22 @@
 import { useContext } from "react";
-import { User } from "../../types/user";
-import { WebSocketContext } from "../ws/WebSocketProvider";
+import { UserStateContext } from "../ws/UserStateProvider";
 import { Community } from "./Community";
 
-export const ServerMap = ({
-  activeCId,
-  setCommunity,
-}: {
-  activeCId: string;
-  setCommunity: any;
-}) => {
-  let u = useContext(WebSocketContext);
+export const ServerMap = () => {
+  let context = useContext(UserStateContext);
   return (
     <div className="servermap">
-      {u.conn.user.communities.length == 0 ? (
+      {context.communities.length == 0 ? (
         <p> you&apos;re broke </p>
       ) : (
         <>
           <br />
-          {u.conn.user.communities.map((community) => {
+          {context.communities.map((community) => {
             return (
               <Community
                 key={`community-${community.id}`}
                 c={community}
-                isActive={activeCId === community.id}
-                setCommunity={setCommunity}
+                isActive={context.currentCommunity?.id === community.id}
               />
             );
           })}

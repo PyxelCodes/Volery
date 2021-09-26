@@ -12,7 +12,6 @@ router.get('/github/callback',
         res.redirect('/');
     });
 router.get('/', (req, res) => {
-    console.log(req.user)
     if (req.user) {
         res.send(req.user)
     } else {

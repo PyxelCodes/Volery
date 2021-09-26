@@ -10,6 +10,7 @@ export default model('user', new Schema({
     created: Number,
     avatar: String,
     communities: Array,
+    username: String,
     userSettings: {
         type: Object,
         default: {}
