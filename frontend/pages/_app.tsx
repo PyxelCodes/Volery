@@ -25,7 +25,7 @@ declare global {
 function Prepare({ children }) {
   if (process.browser) {
     window.config = {
-      host: process.env.NODE_ENV === "development" ? "localhost:3000/api" : "",
+      host: process.env.NODE_ENV === "development" ? "localhost:3000/api" : "volery.me",
       secure: process.env.NODE_ENV === "production",
     };
     window.apireq = {
