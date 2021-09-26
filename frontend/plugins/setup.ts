@@ -3,7 +3,7 @@ import WebpackModules from "./webpackmodules";
 
 
 export const setupPluginApi = () => {
-    window.VoleryApi = VoleryApi;
+    window.VoleryApi = new VoleryApi();
 
     console.log(WebpackModules.getByProps('createElement', 'cloneElement'))
 }
@@ -11,6 +11,6 @@ export const setupPluginApi = () => {
 
 declare global {
     interface Window {
-        VoleryApi: typeof VoleryApi;
+        VoleryApi: VoleryApi;
     }
 }

@@ -1,5 +1,4 @@
-import MarkdownElement from "./md/MarkdownElement";
-
+import { MarkdownElement } from './md/MarkdownElement';
 
 export const Message = ({ msg, inline }) => {
   let d = new Date(msg.created_at);
@@ -7,12 +6,20 @@ export const Message = ({ msg, inline }) => {
   let dateString = `${d.toLocaleString()}`;
 
   return (
-    <li 
-    id={`message-${msg.id}`}
-    onMouseEnter={() => document.getElementById(`message-${msg.id}`).classList.add('message-hover')}
-    onMouseLeave={() => document.getElementById(`message-${msg.id}`).classList.remove('message-hover')}
+    <li
+      id={`message-${msg.id}`}
+      onMouseEnter={() =>
+        document
+          .getElementById(`message-${msg.id}`)
+          .classList.add('message-hover')
+      }
+      onMouseLeave={() =>
+        document
+          .getElementById(`message-${msg.id}`)
+          .classList.remove('message-hover')
+      }
     >
-      <div className={`message ${inline ? "inline" : ""}`}>
+      <div className={`message ${inline ? 'inline' : ''}`}>
         <div className="contents">
           {!inline && (
             <>
@@ -37,12 +44,9 @@ export const Message = ({ msg, inline }) => {
               </h2>
             </>
           )}
-          <div
-            className="content"
-            
-          > 
-          <MarkdownElement> {msg.content} </MarkdownElement>
-              </div>
+          <div className="content">
+            <MarkdownElement> {msg.content} </MarkdownElement>
+          </div>
         </div>
       </div>
     </li>

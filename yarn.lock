@@ -596,6 +596,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/js-cookie@npm:^2.2.7":
+  version: 2.2.7
+  resolution: "@types/js-cookie@npm:2.2.7"
+  checksum: 851f47e94ca1fc43661d8f51614d67a613e7810c91b876d0a3b311ce72f7df800107fd02a08cb6948184e12c120b4f058edca2f50424d8798bdcffd6627281e3
+  languageName: node
+  linkType: hard
+
 "@types/json5@npm:^0.0.29":
   version: 0.0.29
   resolution: "@types/json5@npm:0.0.29"
@@ -683,6 +690,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/prismjs@npm:^1.16.6":
+  version: 1.16.6
+  resolution: "@types/prismjs@npm:1.16.6"
+  checksum: fcb489d19d21292ceffc661fd9c9aa8ba36bcd2835388fa85812aa60cdf14d4720ceb22be7a088aa753c48462e75bcd8191d178a085e4a8b0d3f34471d30d86a
+  languageName: node
+  linkType: hard
+
 "@types/prop-types@npm:*":
   version: 15.7.4
   resolution: "@types/prop-types@npm:15.7.4"
@@ -701,6 +715,15 @@ __metadata:
   version: 1.2.4
   resolution: "@types/range-parser@npm:1.2.4"
   checksum: b7c0dfd5080a989d6c8bb0b6750fc0933d9acabeb476da6fe71d8bdf1ab65e37c136169d84148034802f48378ab94e3c37bb4ef7656b2bec2cb9c0f8d4146a95
+  languageName: node
+  linkType: hard
+
+"@types/react-loader-spinner@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@types/react-loader-spinner@npm:4.0.0"
+  dependencies:
+    react-loader-spinner: "*"
+  checksum: ac85e7d9b9807cf07341b0f521a5a6b6c61ee9901cbc2286bf875da5aee762bd7268e0507b663a74455aa04bafa9b586b7f8e36d5e928c5e610620d2333d146b
   languageName: node
   linkType: hard
 
@@ -2864,20 +2887,27 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "frontend@workspace:frontend"
   dependencies:
+    "@types/js-cookie": ^2.2.7
     "@types/marked": ^3.0.1
+    "@types/prismjs": ^1.16.6
     "@types/react": ^17.0.22
+    "@types/react-loader-spinner": ^4.0.0
     axios: ^0.21.4
     eslint: 7.32.0
     eslint-config-next: 11.1.2
     formik: ^2.2.9
+    highlight.js: ^11.2.0
+    js-cookie: ^3.0.1
     marked: ^3.0.4
     nanoid: ^3.1.25
     next: 11.1.2
     next-transpile-modules: ^8.0.0
+    prismjs: ^1.25.0
     react: 17.0.2
     react-collapsible: ^2.8.4
     react-dom: 17.0.2
     react-infinite-scroll-component: ^6.1.0
+    react-loader-spinner: ^4.0.0
     react-modal: ^3.14.3
     react-responsive: ^9.0.0-beta.4
     reconnecting-websocket: ^4.4.0
@@ -3120,6 +3150,13 @@ __metadata:
   bin:
     he: bin/he
   checksum: 3d4d6babccccd79c5c5a3f929a68af33360d6445587d628087f39a965079d84f18ce9c3d3f917ee1e3978916fc833bb8b29377c3b403f919426f91bc6965e7a7
+  languageName: node
+  linkType: hard
+
+"highlight.js@npm:^11.2.0":
+  version: 11.2.0
+  resolution: "highlight.js@npm:11.2.0"
+  checksum: 12bfd562899a6a70d20321460ec40a94456bd8a9cb7deedbb70630c1981b937690fa0c7cf056d8f12c3c39981b400fb1a4f8b784b97399b26bd812460809cc0e
   languageName: node
   linkType: hard
 
@@ -3604,6 +3641,13 @@ __metadata:
     merge-stream: ^2.0.0
     supports-color: ^8.0.0
   checksum: d56bfe67cdb32472d5ffe120bf4956a158155f8d7083c2ef258dc6b498a77d80cbee9aa029bbfb7e72f49e2de0c0dfbf5f76b48d39573f7d020578739ac5ea0d
+  languageName: node
+  linkType: hard
+
+"js-cookie@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "js-cookie@npm:3.0.1"
+  checksum: bb48de67e2a6bd1ae3dfd6b2d5a167c33dd0c5a37e909206161eb0358c98f17cb55acd55827a58e9eea3630d89444e7479f7938ef4420dda443218b8c434a4c3
   languageName: node
   linkType: hard
 
@@ -5023,6 +5067,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"prismjs@npm:^1.25.0":
+  version: 1.25.0
+  resolution: "prismjs@npm:1.25.0"
+  checksum: 04d8eae9d1b26b76c350bc65621584c8f8cab80ace7da3953f8aef2f9a8dd4b4f71c1d15bc5c67f126ddc90cd5af613919dc1340589a6c57355bed86fa3ac010
+  languageName: node
+  linkType: hard
+
 "process-nextick-args@npm:~2.0.0":
   version: 2.0.1
   resolution: "process-nextick-args@npm:2.0.1"
@@ -5277,6 +5328,18 @@ __metadata:
   version: 3.0.4
   resolution: "react-lifecycles-compat@npm:3.0.4"
   checksum: a904b0fc0a8eeb15a148c9feb7bc17cec7ef96e71188280061fc340043fd6d8ee3ff233381f0e8f95c1cf926210b2c4a31f38182c8f35ac55057e453d6df204f
+  languageName: node
+  linkType: hard
+
+"react-loader-spinner@npm:*, react-loader-spinner@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "react-loader-spinner@npm:4.0.0"
+  dependencies:
+    prop-types: ^15.7.2
+  peerDependencies:
+    react: "*"
+    react-dom: "*"
+  checksum: 419ca68445444a497f09ead8a040aa8d4a231d336573f345d2a26d39c2694fb8ba284c64c1e45b09a22e41e107f318b9b172f19f3e5bd1d5784dd24fb0101156
   languageName: node
   linkType: hard
 

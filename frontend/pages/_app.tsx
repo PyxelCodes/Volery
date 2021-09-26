@@ -1,13 +1,16 @@
-import { WaitForWsAndAuth } from "../modules/auth/WaitForWsAndAuth";
-import { WebSocketProvider } from "../modules/ws/WebSocketProvider";
-import { useState } from "react";
-import "../styles/globals.scss";
-import "../styles/serverbar.scss";
-import "../styles/channelbar.scss";
-import "../styles/topbar.scss";
-import "../styles/message.scss";
-import '../styles/textarea.scss'
-import { UserStateProvider } from "../modules/ws/UserStateProvider";
+import { WaitForWs } from '../modules/auth/WaitForWs';
+import { WebSocketProvider } from '../modules/ws/WebSocketProvider';
+import { useState } from 'react';
+import '../styles/globals.scss';
+import '../styles/serverbar.scss';
+import '../styles/channelbar.scss';
+import '../styles/topbar.scss';
+import '../styles/message.scss';
+import '../styles/textarea.scss';
+import '../styles/highlight.scss'
+import { UserStateProvider } from '../modules/ws/UserStateProvider';
+import { WaitForAuth } from '../modules/ws/WaitForAuth';
+import { InitialLoadingPage } from '../modules/loader/InitialLoadingPage';
 
 declare global {
   export interface Window {
@@ -26,9 +29,18 @@ declare global {
 function Prepare({ children }) {
   if (process.browser) {
     window.config = {
-      host: process.env.NODE_ENV === "development" ? "localhost:3000/api" : `${window.location.hostname}/api`,
-      baseURL: window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/api',
-      secure: process.env.NODE_ENV === "production",
+      host:
+        process.env.NODE_ENV === 'development'
+          ? 'localhost:3000/api'
+          : `${window.location.hostname}/api`,
+      baseURL:
+        window.location.protocol +
+        '//' +
+        window.location.hostname +
+        ':' +
+        window.location.port +
+        '/api',
+      secure: process.env.NODE_ENV === 'production',
     };
     window.apireq = {
       remaining: 50,
@@ -36,20 +48,22 @@ function Prepare({ children }) {
     };
     return children;
   } else {
-    return <p> loading </p>;
+    return <InitialLoadingPage text="Authenticating" step="2" />;
   }
 }
 
 export default function Volery({ Component, pageProps }) {
   return (
     <Prepare>
-      <WebSocketProvider>
-        <WaitForWsAndAuth>
-          <UserStateProvider>
-            <Component {...pageProps} />
-          </UserStateProvider>
-        </WaitForWsAndAuth>
-      </WebSocketProvider>
+      <WaitForAuth>
+        <WebSocketProvider>
+          <WaitForWs>
+            <UserStateProvider>
+              <Component {...pageProps} />
+            </UserStateProvider>
+          </WaitForWs>
+        </WebSocketProvider>
+      </WaitForAuth>
     </Prepare>
   );
 }

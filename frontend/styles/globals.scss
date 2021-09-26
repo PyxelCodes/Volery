@@ -1,11 +1,11 @@
 $font-stack: 'Roboto', sans-serif;
 
-$primary-color: #2E3440;
-$secondary-color: #3B4252;
-$third-color: #434C5E;
-$btn-primary-color: #4C566A;
+$primary-color: #2e3440;
+$secondary-color: #3b4252;
+$third-color: #434c5e;
+$btn-primary-color: #4c566a;
 $hover-color: #4d2b37;
-$border-color: #4C566A;
+$border-color: #4c566a;
 
 html,
 body {
@@ -23,6 +23,28 @@ body {
   top: 0;
 }
 
+.loading {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  .spinner {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-bottom: 40px;
+  }
+  .loadingtext {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    margin-top: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: #D8DEE9;
+  }
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -32,24 +54,24 @@ a {
   box-sizing: border-box;
 }
 
-
 li {
   list-style-type: none;
 }
 
-.markdown{
+.markdown {
   height: inherit;
 }
-
 
 code {
   width: auto;
   height: auto;
-  padding: .2em;
-  margin: -.2em 0;
+  padding: 0.2em;
+  margin: -0.2em 0;
   border-radius: 3px;
   font-size: 85%;
-  font-family: Consolas,Andale Mono WT,Andale Mono,Lucida Console,Lucida Sans Typewriter,DejaVu Sans Mono,Bitstream Vera Sans Mono,Liberation Mono,Nimbus Mono L,Monaco,Courier New,Courier,monospace;
+  font-family: Consolas, Andale Mono WT, Andale Mono, Lucida Console,
+    Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono,
+    Liberation Mono, Nimbus Mono L, Monaco, Courier New, Courier, monospace;
   text-indent: 0;
   border: none;
   white-space: pre-wrap;

@@ -1,25 +1,33 @@
-import React from "react";
-import marked from "marked";
+import React, { useEffect } from 'react';
+import marked from 'marked';
+import hljs from 'highlight.js';
 
-export default class MarkdownElement extends React.Component {
-  constructor(props) {
-    super(props);
+export const MarkdownElement = ({ children }) => {
+  marked.setOptions({
+    renderer: new marked.Renderer(),
+    langPrefix: 'hljs language-',
+    highlight: (code, lang) => {
+      if (hljs.getLanguage(lang)) {
+        return hljs.highlight(lang, code).value;
+      } else {
+        return hljs.highlightAuto(code).value;
+      }
+    },
+    xhtml: false,
+    gfm: true,
+    breaks: false,
+    pedantic: false,
+    smartLists: false,
+    smartypants: false,
+  });
 
-    marked.setOptions({
-      gfm: true,
-      breaks: false,
-      pedantic: false,
-      smartLists: false,
-      smartypants: false,
-    });
-  }
-  render() {
-    const text: any[] = this.props.children as any;
+  useEffect(() => {
+    hljs.highlightAll();
+  }, []);
 
-    let html = marked.parseInline(text.join("") || "");
+  let html = marked(children.join('') || '');
 
-    return (
-      <div dangerouslySetInnerHTML={{ __html: html }} className="markdown" />
-    );
-  }
-}
+  return (
+    <div dangerouslySetInnerHTML={{ __html: html }} className="markdown" />
+  );
+};

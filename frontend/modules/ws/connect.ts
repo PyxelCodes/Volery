@@ -1,7 +1,6 @@
 import ReconnectingWebSocket from "reconnecting-websocket";
 import { Connection, Listener, Opcode } from "./types";
 
-
 const apiUrl = "wss://api.dogehouse.tv/socket";
 const heartbeatInterval = 41500;
 const connectionTimeout = 15000;
@@ -85,6 +84,7 @@ export const connect = ({
 
                         return () => listeners.splice(listeners.indexOf(listener), 1);
                     },
+                    authUser: null,
                     user,
                     send: api2send,
                 }

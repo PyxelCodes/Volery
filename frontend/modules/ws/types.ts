@@ -42,6 +42,7 @@ export type Connection = {
         handler: ListenerHandler<Data>
     ) => () => void;
     user: User;
+    authUser: any;
     initialCurrentRoomId?: string;
     send: (opcode: Opcode, data: unknown, fetchId?: string) => void;
 };
