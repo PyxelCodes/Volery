@@ -10,7 +10,7 @@ let config = {
         destination:
           process.env.NODE_ENV === 'development'
             ? 'http://localhost:4001/:path*'
-            : '',
+            : 'https://api.volery.me/:path*',
       },
     ];
   },
