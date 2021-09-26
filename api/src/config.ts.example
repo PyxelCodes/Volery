@@ -1,11 +1,13 @@
 export default {
     mongo: {
         uri: '',
-        config: {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            useFindAndModify: false,
-        }
     },
-    port: 4001
+    port: 4001,
+    github: {
+        clientID: '',
+        clientSecret: '',
+        callbackURL: process.env.NODE_ENV == 'production' ? 'https://volery.me/api/auth/github/callback' : 'http://localhost:3000/api/auth/github/callback',
+
+    },
+    encryptionKey: ''
 }

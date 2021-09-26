@@ -15,9 +15,6 @@ _
 yarn-error.log
 
 dist
-.yarn
-!.yarn/releases
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
+.yarn/cache
+.yarn/install-state.gz
 .pnp.*

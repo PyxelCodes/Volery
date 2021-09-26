@@ -1,2 +1,2 @@
-export const baseURL = `http://localhost:3000`
-export const gatewayURL = `ws://localhost:4001/gateway`
+export const baseURL = process.env.NODE_ENV == 'production' ? 'https://volery.me' : `http://localhost:3000`
+export const gatewayURL = process.env.NODE_ENV == 'production' ? 'wss://api.volery.me/gateway' : `ws://localhost:4001/gateway`
