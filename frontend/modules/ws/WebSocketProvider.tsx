@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { Connection, User } from "./types";
 import { connect } from "./connect";
-import { baseURL, gatewayURL } from "../../constants/urls";
+import { gatewayURL } from "../../constants/urls";
 
 type V = Connection | null;
 
