@@ -1,17 +1,27 @@
 @use 'globals';
 
 .messages {
-  background-color: #3b4252;
+  background-color: globals.$third-color;
   position: absolute;
   overflow-y: scroll;
   top: 0;
-  margin-left: 335px;
+  margin-left: 322px;
   margin-top: 63px;
-  height: calc(84%);
-  width: calc(100% - 340px);
+  height: calc(100% - 120px);
+  width: calc(100% - 322px - 240px);
+  padding-bottom: 20px;
 
   li {
     outline: none;
+  }
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+  &::-webkit-scrollbar-track {
+    background: none;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #888;
   }
 }
 

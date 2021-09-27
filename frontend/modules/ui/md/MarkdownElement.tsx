@@ -1,8 +1,19 @@
 import React, { useEffect } from 'react';
 import marked from 'marked';
 import hljs from 'highlight.js';
+import { nanoid } from 'nanoid';
+
+function escapeHtml(unsafe) {
+    return unsafe
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+ }
 
 export const MarkdownElement = ({ children }) => {
+  let id = nanoid(20);
   marked.setOptions({
     renderer: new marked.Renderer(),
     langPrefix: 'hljs language-',
@@ -16,18 +27,19 @@ export const MarkdownElement = ({ children }) => {
     xhtml: false,
     gfm: true,
     breaks: false,
+    sanitize: true,
     pedantic: false,
     smartLists: false,
     smartypants: false,
   });
 
-  useEffect(() => {
-    hljs.highlightAll();
-  }, []);
-
   let html = marked(children.join('') || '');
 
   return (
-    <div dangerouslySetInnerHTML={{ __html: html }} className="markdown" />
+    <div
+      dangerouslySetInnerHTML={{ __html: html }}
+      className="markdown"
+      id={`md-${id}`}
+    />
   );
 };

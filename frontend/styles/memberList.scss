@@ -1,0 +1,26 @@
+@use 'globals';
+
+.membersWrapper {
+  overflow: hidden;
+  min-width: 240px;
+  display: flex;
+  position: absolute;
+  top: 0;
+  margin-left: calc(100% - 240px);
+  padding-right: 0px;
+  background-color: #3b4252;
+  height: 100%;
+  overflow: hidden scroll;
+}
+
+.membersWrapper {
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+  &::-webkit-scrollbar-track {
+    background: none;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+}

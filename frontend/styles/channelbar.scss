@@ -5,16 +5,15 @@
 
   position: absolute;
   top: 0;
-  margin-left: 80px;
+  margin-left: 72px;
   border: none;
-  border-radius: 1.3rem;
-  background-color: #3b4252;
+  background-color: globals.$secondary-color;
   height: 100%;
+  border-right: 1px solid globals.$border-color;
 
   .community-info {
-    border-radius: 1.3rem 1.3rem 0 0;
     border-bottom: 1px solid globals.$border-color;
-    background-color: globals.$third-color;
+    background-color: globals.$secondary-color;
     font-size: 10px;
     font-weight: 400;
     padding: 10px;
@@ -22,6 +21,7 @@
     color: #dedede;
     text-overflow: ellipsis;
     overflow: hidden;
+    height: 63px;
   }
 
   .channel {

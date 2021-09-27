@@ -423,6 +423,86 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@syncfusion/ej2-base@npm:~19.2.60":
+  version: 19.2.60
+  resolution: "@syncfusion/ej2-base@npm:19.2.60"
+  dependencies:
+    "@syncfusion/ej2-icons": ~19.2.60
+  checksum: b909bca1d6e0fcc46a19a15ac720de16ef7759d180e2e944d662e43afd3ad7dfc65e20fe1a265fad7926476a87e70c8d2c0db67f4af11bf24f08662a0aad6c7a
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-buttons@npm:~19.2.60":
+  version: 19.2.60
+  resolution: "@syncfusion/ej2-buttons@npm:19.2.60"
+  dependencies:
+    "@syncfusion/ej2-base": ~19.2.60
+  checksum: 8b523e343db8b5689e2475d86f26ad6842294da73f06c04149aaa4abbec181bb823592ddef6c6e97d1fee2aa20cb821b7a0009aedd5356da274b4f86dde9fa1e
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-icons@npm:~19.2.60":
+  version: 19.2.60
+  resolution: "@syncfusion/ej2-icons@npm:19.2.60"
+  checksum: 615e67a208e19a26878dafea0790761814a047a1a87122bb2d9ccc4ec57aa576e5ad76b34d4b0b98cd890a824ee84715814ceb2b58d89bb5fa8b26ad00fb9024
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-inputs@npm:19.2.60":
+  version: 19.2.60
+  resolution: "@syncfusion/ej2-inputs@npm:19.2.60"
+  dependencies:
+    "@syncfusion/ej2-base": ~19.2.60
+    "@syncfusion/ej2-buttons": ~19.2.60
+    "@syncfusion/ej2-popups": ~19.2.60
+    "@syncfusion/ej2-splitbuttons": ~19.2.60
+  checksum: 8ee4db167edec33cd3224b3882794327a6c94e4c0b479c9aac1db85b8bb40bf273ce784640221058ec33d51f3eebb652d389bf980f4e2ed52934bf13d8545acc
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-popups@npm:~19.2.60, @syncfusion/ej2-popups@npm:~19.2.62":
+  version: 19.2.62
+  resolution: "@syncfusion/ej2-popups@npm:19.2.62"
+  dependencies:
+    "@syncfusion/ej2-base": ~19.2.60
+    "@syncfusion/ej2-buttons": ~19.2.60
+  checksum: a0713274f771b9f9960527c6a486c093382490a555e0dc012b508355b8c02fc12b7263c036a2436b1823d82248e63b1410d693ac5d0f3e2c913a8a1449d0f55e
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-react-base@npm:~19.2.60":
+  version: 19.2.60
+  resolution: "@syncfusion/ej2-react-base@npm:19.2.60"
+  dependencies:
+    "@syncfusion/ej2-base": ~19.2.60
+  peerDependencies:
+    react: 16.13.1 - 17.0.2
+    react-dom: 16.13.1 - 17.0.2
+  checksum: cd1c02ccf8cb67e8fb7b45421c71f3925f675e83fc7bc6bf08e347c7d3db74de289afbee872e31d6b6229fe1aceeefff9290bb6563cf0a8bd465e02e850de4f1
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-react-inputs@npm:^19.2.60":
+  version: 19.2.60
+  resolution: "@syncfusion/ej2-react-inputs@npm:19.2.60"
+  dependencies:
+    "@syncfusion/ej2-base": ~19.2.60
+    "@syncfusion/ej2-inputs": 19.2.60
+    "@syncfusion/ej2-react-base": ~19.2.60
+  checksum: 569f2a9b5f10783386a1ea9e40eb96fb8187ddc2231feb9809ccd84354dfa50fab4f359af89088b1743b4eb531de3e43e78ce50e2b5f1aa24eb940823fe4b36b
+  languageName: node
+  linkType: hard
+
+"@syncfusion/ej2-splitbuttons@npm:~19.2.60":
+  version: 19.2.62
+  resolution: "@syncfusion/ej2-splitbuttons@npm:19.2.62"
+  dependencies:
+    "@syncfusion/ej2-base": ~19.2.60
+    "@syncfusion/ej2-popups": ~19.2.62
+  checksum: ecb0c155124787dba80b39b3f0fbf56605ec4eeba66f24972f13c4d713d7e3ae0dc5abe586c90f02e1554d9e3fb1e4114b3f5ec9ab52c7cdd415ca9aa7393a49
+  languageName: node
+  linkType: hard
+
 "@tootallnate/once@npm:1":
   version: 1.1.2
   resolution: "@tootallnate/once@npm:1.1.2"
@@ -1033,6 +1113,7 @@ __metadata:
   dependencies:
     "@sentry/node": ^6.13.0
     "@sentry/tracing": ^6.13.0
+    "@syncfusion/ej2-react-inputs": ^19.2.60
     "@types/connect-mongo": ^3.1.3
     "@types/cors": ^2.8.12
     "@types/crypto-js": ^4.0.2

@@ -7,6 +7,7 @@ import { UserStateContext } from "../modules/ws/UserStateProvider";
 import { TextArea } from "../modules/ui/TextArea";
 import { loadThemes } from "../themes/loadThemes";
 import { setupPluginApi } from "../plugins/setup";
+import { MemberList } from "../modules/ui/MemberList";
 
 export default function Home() {
   let [loading, setLoading] = useState(true);
@@ -59,7 +60,7 @@ export default function Home() {
       {currentCommunity && <SecondSidebar />}
       {currentChannel && <Topbar />}
       {currentChannel && <Messages />}
-      {currentChannel && <TextArea />}
+      {currentChannel && <MemberList />}
     </>
   );
 }

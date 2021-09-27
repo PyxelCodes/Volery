@@ -1,13 +1,14 @@
 import { WaitForWs } from '../modules/auth/WaitForWs';
 import { WebSocketProvider } from '../modules/ws/WebSocketProvider';
-import { useState } from 'react';
+import Head from 'next/head';
 import '../styles/globals.scss';
 import '../styles/serverbar.scss';
 import '../styles/channelbar.scss';
 import '../styles/topbar.scss';
 import '../styles/message.scss';
 import '../styles/textarea.scss';
-import '../styles/highlight.scss'
+import '../styles/highlight.scss';
+import '../styles/memberList.scss';
 import { UserStateProvider } from '../modules/ws/UserStateProvider';
 import { WaitForAuth } from '../modules/ws/WaitForAuth';
 import { InitialLoadingPage } from '../modules/loader/InitialLoadingPage';
