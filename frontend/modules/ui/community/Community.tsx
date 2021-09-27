@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { UserStateContext } from "../ws/UserStateProvider";
+import { UserStateContext } from "../../ws/UserStateProvider";
 
 export const Community = ({ c, isActive }: { c: any; isActive: boolean }) => {
   let context = useContext(UserStateContext);

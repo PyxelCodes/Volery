@@ -27,7 +27,6 @@ export const MarkdownElement = ({ children }) => {
     xhtml: false,
     gfm: true,
     breaks: false,
-    sanitize: true,
     pedantic: false,
     smartLists: false,
     smartypants: false,

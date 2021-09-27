@@ -9,9 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "@mui/icons-material": "^5.0.1",
+    "@mui/material": "^5.0.1",
     "@types/marked": "^3.0.1",
     "@types/prismjs": "^1.16.6",
     "@types/react-loader-spinner": "^4.0.0",
+    "@types/react-modal": "^3.12.1",
     "axios": "^0.21.4",
     "formik": "^2.2.9",
     "highlight.js": "^11.2.0",
@@ -29,6 +34,7 @@
     "react-modal": "^3.14.3",
     "react-responsive": "^9.0.0-beta.4",
     "reconnecting-websocket": "^4.4.0",
+    "redux": "^4.1.1",
     "sass": "^1.41.1",
     "zustand": "^3.5.10"
   },

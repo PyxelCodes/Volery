@@ -10,13 +10,9 @@ export const TextArea = () => {
   let context = useContext(UserStateContext);
   let { currentChannel, user, setCurrentChannelMessages } = context;
 
-  let messageWrapperRef = useRef<HTMLOListElement>(null); // TODO: use this ref on the messageWrapper and see if it scrolls better that way
-
   const handleSubmit = async () => {
     //@ts-ignore
     let message = document.getElementsByClassName('e-input')[0].value;
-    console.log(message);
-    console.log('onmsg', user, !user);
     if (!user) return;
 
     if (
@@ -44,8 +40,7 @@ export const TextArea = () => {
     ]);
 
     createMessage(message, context, nonce).then(msg => {
-      let doc = document.getElementsByClassName('messages')[0];
-      doc.scrollTop = doc.scrollHeight;
+     // messageWrapperRef.current.scrollIntoView();
     });
   };
 

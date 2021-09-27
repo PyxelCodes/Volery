@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { Serverbar } from "../modules/ui/Serverbar";
+import { Serverbar } from "../modules/ui/community/Serverbar";
 import { SecondSidebar } from "../modules/ui/SecondSidebar";
 import { Topbar } from "../modules/ui/Topbar";
 import { Messages } from "../modules/ui/Messages";

@@ -3,49 +3,41 @@ import user from '../schemas/user';
 import { VoleryUser } from '..'
 import Communities from '../schemas/communities';
 import Channels from '../schemas/Channels';
+import authUser from '../schemas/authUser';
+import { authenticate } from './authenticate';
 const router = Router();
 
 //@ts-ignore
 router.ws('/', async (ws: any, req) => {
-    if (!req.user) return ws.close()
 
-    let { avatar, displayName, id, username } = req.user as VoleryUser;
+    ws.authed = false;
 
-    let dbuser: any = await user.findOne({ id });
-
-
-    ws.user = dbuser;
-
-    let friends = await user.find({ id: { $in: dbuser.friends.map((x: any) => x.id) } })
-
-    let communities: any[] = await Communities.find({ id: { $in: dbuser.communities } })
-
-    for (let x in communities) {
-        let channels: any[] = await Channels.find({ id: { $in: communities[x].channels } })
-        communities[x].channels = channels;
-    }
-
-    let helloSocket = {
-        op: 10, // HELLO
-        t: Date.now(),
-        d: {
-            authedAs: id,
-            heartbeat_interval: 41500,
-            user: {
-                avatar,
-                displayName,
-                id,
-                username
-            },
-            communities: communities,
-            friends,
+    ws.send(JSON.stringify(
+        {
+            op: 0,
+            t: 'HELLO',
+            d: {
+                heartbeat_interval: 41500,
+            }
         }
-    }
+    ))
 
-    ws.send(JSON.stringify(helloSocket), (err: Error) => console.log(err))
+    setTimeout(() => {
+        if (!ws.authed) {
+            ws.send(JSON.stringify({
+                op: 9,
+                t: 'IDENTIFY_TIMEOUT'
+            }))
+            return ws.close();
+        }
+    }, 20000) // you get 20sec to IDENTIFY
+
+    ws.on('message', (e: any) => authenticate(e, ws))
+
 
 
     ws.on('message', async (data: string) => {
+        if (!ws.authed) return;
         let msg = JSON.parse(data as string);
         let module = await import('./ops/' + msg.op)
         module.default(ws);

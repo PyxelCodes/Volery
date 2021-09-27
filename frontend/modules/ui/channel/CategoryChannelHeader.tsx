@@ -1,4 +1,4 @@
-import { ArrowSvg } from "../svgs/arrow";
+import { ArrowSvg } from "../../svgs/arrow";
 
 export const CategoryChannelHeader = ({ name }: { name: string }) => {
   return (

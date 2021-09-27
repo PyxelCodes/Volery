@@ -11,7 +11,7 @@
 .servermap {
   overflow: hidden scroll; 
   padding-right: 0px;
-  padding-top: 4px;
+  padding-top: 12px;
   &::-webkit-scrollbar {
     display: none;
   }
@@ -57,8 +57,13 @@
       border-radius: 10px;
       transition: 300ms border-radius ease;
     }
+    &:active {
+      transform: translateY(2px);
+      transition: 100ms transform ease-in-out;
+    }
     .community-noicon-text {
       color: #dedede !important;
+      height: 24px;
     }
   }
 }

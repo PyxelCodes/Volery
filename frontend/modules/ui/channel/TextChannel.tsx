@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { fetchMessagesFor } from "../../lib/fetchMessagesFor";
-import { UserStateContext } from "../ws/UserStateProvider";
+import { fetchMessagesFor } from "../../../lib/fetchMessagesFor";
+import { UserStateContext } from "../../ws/UserStateProvider";
 
 export const TextChannel = ({ channel }) => {
 

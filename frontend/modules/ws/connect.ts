@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import ReconnectingWebSocket from "reconnecting-websocket";
+import { AuthContext } from "./AuthUserContext";
 import { Connection, Listener, Opcode } from "./types";
 
 const apiUrl = "wss://api.dogehouse.tv/socket";
@@ -14,9 +16,11 @@ const logger = (direction, opcode, data, fetchId, raw) => {
 export const connect = ({
     onConnectionTaken = () => { },
     url = apiUrl,
-    waitToReconnect
-}): Promise<Connection> => {
+    waitToReconnect,
+    accessToken,
+}): Promise<Connection> => { 
     return new Promise((resolve, reject) => {
+
         const socket = new ReconnectingWebSocket(url, [], {
             connectionTimeout,
             WebSocket
@@ -52,7 +56,17 @@ export const connect = ({
         socket.addEventListener('message', e => {
             let message = JSON.parse(e.data);
 
-            if (message.op == 10) { // HELLO
+            if (message.t == 'HELLO') {
+                socket.send(JSON.stringify({
+                    op: 2,
+                    t: 'IDENTIFY',
+                    d: {
+                        token: accessToken,
+                    }
+                }))
+            }
+
+            if (message.op == 10) { // READY
                 let user = message.d.user;
                 user.communityIds = user.communities;
                 user.communities = message.d.communities;

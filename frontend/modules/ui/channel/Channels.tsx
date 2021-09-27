@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { UserStateContext } from "../ws/UserStateProvider";
+import { UserStateContext } from "../../ws/UserStateProvider";
 import { CategoryChannel } from "./CategoryChannel";
 import { TextChannel } from "./TextChannel";
 

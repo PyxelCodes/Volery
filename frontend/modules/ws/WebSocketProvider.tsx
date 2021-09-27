@@ -3,6 +3,9 @@ import { useRouter } from "next/router";
 import { Connection, User } from "./types";
 import { connect } from "./connect";
 import { gatewayURL } from "../../constants/urls";
+import { useContext } from "react";
+import { AuthContext } from "./AuthUserContext";
+import store from "./stores/AuthStore";
 
 type V = Connection | null;
 
@@ -21,12 +24,17 @@ export const WebSocketProvider = ({ children }) => {
   const { replace } = useRouter();
   const isConnecting = useRef(false);
 
+  let authUser = JSON.parse(store.getState())
+
+  console.log(authUser)
+
   useEffect(() => {
     if (!conn && !isConnecting.current) {
       isConnecting.current = true;
       connect({
         waitToReconnect: true,
         url: gatewayURL,
+        accessToken: authUser.accessToken,
       })
         .then((x) => {
           setConn(x);
@@ -40,7 +48,7 @@ export const WebSocketProvider = ({ children }) => {
           isConnecting.current = false;
         });
     }
-  }, [conn, replace]);
+  }, [conn, replace, authUser.accessToken]);
 
   return (
     <WebSocketContext.Provider

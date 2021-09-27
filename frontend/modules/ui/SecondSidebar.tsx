@@ -1,5 +1,5 @@
-import { CommunityInfo } from "./CommunityInfo";
-import { Channels } from "./Channels";
+import { CommunityInfo } from "./community/CommunityInfo";
+import { Channels } from "./channel/Channels";
 
 export const SecondSidebar = () => {
   return (

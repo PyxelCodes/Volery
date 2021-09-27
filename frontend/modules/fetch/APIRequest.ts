@@ -8,7 +8,7 @@ interface APIRequestOptions {
 }
 
 export const APIRequest = (endpoint, options?: APIRequestOptions) => {
-    return new Promise<any>(res => {
+    return new Promise<any>((res, rej) => {
         let host = window.config.host;
         let secure = window.config.secure;
         let protocol = secure ? 'https' : 'http'
@@ -28,7 +28,7 @@ export const APIRequest = (endpoint, options?: APIRequestOptions) => {
             res(data)
         })
         .catch(err => {
-            console.log(err);
+            rej(err)
         })
 
         // fetch(`${protocol}://${host}${vString}${endpoint}`, fetchOptions)

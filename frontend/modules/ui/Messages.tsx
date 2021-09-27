@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, useRef } from 'react';
+import { useContext, useEffect, useState, useRef, Component } from 'react';
 import { fetchMessagesFor } from '../../lib/fetchMessagesFor';
 import { UserStateContext } from '../ws/UserStateProvider';
 import { WebSocketContext } from '../ws/WebSocketProvider';
@@ -14,6 +14,7 @@ export const Messages = () => {
   } = useContext(UserStateContext);
 
   let { conn } = useContext(WebSocketContext);
+  let messageWrapperRef = useRef<HTMLDivElement>(null);
 
   let [loading, setLoading] = useState(true);
 
@@ -45,26 +46,59 @@ export const Messages = () => {
     <div className="center">
       <div className="messages">
         <main className="chat-content">
-          <ol
-            className="messagesWrapper"
-            role="list"
-          >
-            {loading ? (
-              <p> loading </p>
-            ) : (
-              currentChannelMessages.map((msg, i, arr) => {
-                let inline;
-                if (i == 0) inline = false;
-                if (arr[i - 1]?.author.username == msg.author.username)
-                  inline = true;
-
-                return <Message msg={msg} key={`msg-${i}`} inline={inline} />;
-              })
-            )}
-          </ol>
+          <MessageMap
+            currentChannelMessages={currentChannelMessages}
+            loading={loading}
+          />
         </main>
       </div>
       <TextArea />
     </div>
   );
 };
+
+export class MessageMap extends Component<
+  { loading; currentChannelMessages },
+  {}
+> {
+  constructor(props) {
+    super(props);
+  }
+  public spacerdiv;
+  render() {
+    return (
+      <div className="messagesWrapper">
+        {this.props.loading ? (
+          <p> loading </p>
+        ) : (
+          this.props.currentChannelMessages.map((msg, i, arr) => {
+            let inline;
+            if (i == 0) inline = false;
+            if (arr[i - 1]?.author.username == msg.author.username)
+              inline = true;
+
+            return <Message msg={msg} key={`msg-${i}`} inline={inline} />;
+          })
+        )}
+        <div
+          className="dummydiv scrollerspacer"
+          ref={el => {
+            this.spacerdiv = el;
+          }}
+        ></div>
+      </div>
+    );
+  }
+
+  scrollToBottom() {
+    this.spacerdiv.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+}

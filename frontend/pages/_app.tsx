@@ -12,6 +12,8 @@ import '../styles/memberList.scss';
 import { UserStateProvider } from '../modules/ws/UserStateProvider';
 import { WaitForAuth } from '../modules/ws/WaitForAuth';
 import { InitialLoadingPage } from '../modules/loader/InitialLoadingPage';
+import Modal from 'react-modal';
+import { useRouter } from 'next/router';
 
 declare global {
   export interface Window {
@@ -54,9 +56,13 @@ function Prepare({ children }) {
 }
 
 export default function Volery({ Component, pageProps }) {
+  Modal.setAppElement('#__next');
+
+  let router = useRouter();
+
   return (
     <Prepare>
-      <WaitForAuth>
+      <WaitForAuth router={router}>
         <WebSocketProvider>
           <WaitForWs>
             <UserStateProvider>
