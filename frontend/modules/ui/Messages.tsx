@@ -21,6 +21,7 @@ export const Messages = () => {
   useEffect(() => {
     let onMessageCreate = msg => {
       if (msg.author.username == user.username) return;
+      if(currentChannel.id !== msg.channel_id) return;
       setCurrentChannelMessages(old => [...old, msg]);
     };
 
