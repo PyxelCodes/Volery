@@ -23,9 +23,14 @@ export const TextArea = () => {
       return;
     }
     //ts-ignore
-    document.getElementsByClassName('e-input')[0].value = ''; //ts-ignore
-    document.getElementsByClassName('e-input')[0].style.height = '30px'; //ts-ignore
-    document.getElementsByClassName('textinput')[0].style.height = '40px'; //ts-ignore
+    (document.getElementsByClassName('e-input')[0] as HTMLInputElement).value =
+      ''; //ts-ignore
+    (document.getElementsByClassName(
+      'e-input'
+    )[0] as HTMLInputElement).style.height = '30px'; //ts-ignore
+    (document.getElementsByClassName(
+      'textinput'
+    )[0] as HTMLInputElement).style.height = '40px'; //ts-ignore
 
     let nonce = nanoid(30);
 
@@ -40,7 +45,7 @@ export const TextArea = () => {
     ]);
 
     createMessage(message, context, nonce).then(msg => {
-     // messageWrapperRef.current.scrollIntoView();
+      // messageWrapperRef.current.scrollIntoView();
     });
   };
 
