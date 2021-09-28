@@ -6,7 +6,7 @@ export const InitialLoadingPage = ({ text, step }) => {
   return (
     <div className="loading">
       <div className="spinner">
-        <Spinner color="#00ffff" type="Oval" />
+        <Spinner color="#5836ec" type="Oval" />
       </div>
       <div className="loadingtext">
         <h2>
