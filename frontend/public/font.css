@@ -3,3 +3,8 @@
 body {
     font: 100% 'Manrope', sans-serif;
 }
+
+/* force manrope */
+* {
+    font-family: 'Manrope', sans-serif !important;
+}
