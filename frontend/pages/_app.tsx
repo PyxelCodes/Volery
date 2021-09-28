@@ -60,7 +60,8 @@ export default function Volery({ Component, pageProps }) {
 
   let router = useRouter();
 
-  return (
+  return (<>
+    <title>Volery</title>
     <Prepare>
       <WaitForAuth router={router}>
         <WebSocketProvider>
@@ -72,5 +73,6 @@ export default function Volery({ Component, pageProps }) {
         </WebSocketProvider>
       </WaitForAuth>
     </Prepare>
+    </>
   );
 }
