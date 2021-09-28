@@ -70,7 +70,7 @@ export class MessageMap extends Component<
     return (
       <div className="messagesWrapper">
         {this.props.loading ? (
-          <p> loading </p>
+          <p>Loading</p>
         ) : (
           this.props.currentChannelMessages.map((msg, i, arr) => {
             let inline;
