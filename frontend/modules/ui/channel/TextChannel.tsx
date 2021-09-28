@@ -15,7 +15,7 @@ export const TextChannel = ({ channel }) => {
       <div className="content">
         <div className="linkmanager" onClick={clickManager}>
           <span className="icon" />
-          <div className="name" style={{color: 'white'}}>{channel.name}</div>
+          <div className="name">#{channel.name}</div>
         </div>
       </div>
     </div>

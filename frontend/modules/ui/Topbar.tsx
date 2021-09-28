@@ -6,7 +6,7 @@ export const Topbar = () => {
 
   return (
     <div className="topbar">
-      <h2> {channel.name} </h2>
+      <h2 style={{color: 'white'}}> {channel.name} </h2>
     </div>
   );
 };
