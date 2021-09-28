@@ -16,7 +16,7 @@ export const CreateCommunity = () => {
   return (
     <div className="createCommunity">
       <Modal isOpen={isOpen} onRequestClose={closeModal}>
-        <div style={{padding: "15%"}}>
+        <div className="modal">
         <h1>Create your community</h1>
         <p>A community is a cozy place made just for you, your friends, and fans.</p>
         </div>
