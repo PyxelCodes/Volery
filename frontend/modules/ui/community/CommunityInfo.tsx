@@ -7,7 +7,7 @@ export const CommunityInfo = () => {
   return (
     <div className="community-info">
       <header>
-        <h2 className="name" style={{color: 'whitesmoke'}}> {currentCommunity.name} </h2>
+        <h2 className="name"> {currentCommunity.name} </h2>
       </header>
       <div className="dropdown-icon"></div>
     </div>
