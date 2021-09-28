@@ -19,9 +19,6 @@ export const CreateCommunity = () => {
         <div className="modal">
         <h1>Create your community</h1>
         <p>A community is a cozy place made just for you, your friends, and fans.</p>
-        <center>
-        <img src="https://baby-yoda.xyz/u/14/jQEhX9ONYe.png" style={{marginTop: '40px'}} width="300px" alt="Decorative image of a community" />
-        </center>
         </div>
       </Modal>
       <div className="community-listitem" onClick={onClick}>
