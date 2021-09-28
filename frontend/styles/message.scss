@@ -25,6 +25,12 @@
   }
 }
 
+@media screen and (max-width: 1000px) {
+  .messages {
+    width: calc(100% - 322px);
+  }
+}
+
 .message {
   margin-top: 0;
   min-height: 2.75rem;

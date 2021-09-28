@@ -25,3 +25,9 @@
     background: #888;
   }
 }
+
+@media screen and (max-width: 1000px) {
+  .membersWrapper {
+    display: none;
+  }
+}

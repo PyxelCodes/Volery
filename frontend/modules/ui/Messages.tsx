@@ -14,7 +14,6 @@ export const Messages = () => {
   } = useContext(UserStateContext);
 
   let { conn } = useContext(WebSocketContext);
-  let messageWrapperRef = useRef<HTMLDivElement>(null);
 
   let [loading, setLoading] = useState(true);
 

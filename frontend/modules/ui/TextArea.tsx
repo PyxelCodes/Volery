@@ -40,6 +40,7 @@ export const TextArea = () => {
         author: user,
         pending: true,
         content: message.trim(),
+        created_at: Date.now(),
         nonce,
       },
     ]);
