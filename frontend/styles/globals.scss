@@ -21,6 +21,10 @@ body {
   top: 0;
 }
 
+.loadh2 {
+  font-family: Manrope, sans-serif !important;
+}
+
 .loading {
   height: 100%;
   display: flex;
@@ -38,7 +42,7 @@ body {
     position: absolute;
     top: 50%;
     margin-top: 20px;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Manrope', sans-serif !important;
     color: #d8dee9;
   }
 }
