@@ -9,7 +9,7 @@ export const InitialLoadingPage = ({ text, step }) => {
         <Spinner color="#5836ec" type="Oval" />
       </div>
       <div className="loadingtext">
-        <h2>
+        <h2 style={{fontFamily: 'Manrope !important'}}>
           {text} &nbsp; {step}/{totalSteps}
         </h2>
       </div>
