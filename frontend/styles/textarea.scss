@@ -10,7 +10,7 @@ $input-height: 40px;
 
   padding: 40px;
   .textinput {
-      width: calc(100% - 240px - 400px);
+      width: calc(100% - 240px - 350px);
       z-index: 10;
     bottom: 10px;
     position: fixed;
@@ -34,8 +34,8 @@ $input-height: 40px;
 
 .e-input-group {
   display: flex;
-  justify-content: center;
   align-items: center;
+  padding-left: 20px;
 }
 
 .e-input {

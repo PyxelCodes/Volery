@@ -12,7 +12,7 @@ function escapeHtml(unsafe) {
          .replace(/'/g, "&#039;");
  }
 
-export const MarkdownElement = ({ children }) => {
+export const MarkdownElement = ({ text }) => {
   let id = nanoid(20);
   marked.setOptions({
     renderer: new marked.Renderer(),
@@ -32,7 +32,7 @@ export const MarkdownElement = ({ children }) => {
     smartypants: false,
   });
 
-  let html = marked(children.join('') || '');
+  let html = marked(text || '');
 
   return (
     <div

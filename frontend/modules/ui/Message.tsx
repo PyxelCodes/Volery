@@ -45,7 +45,7 @@ export const Message = ({ msg, inline }) => {
             </>
           )}
           <div className="content">
-            <MarkdownElement> {msg.content} </MarkdownElement>
+            <MarkdownElement text={msg.content} />
           </div>
         </div>
       </div>

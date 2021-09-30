@@ -30,4 +30,15 @@
   .membersWrapper {
     display: none;
   }
+  .topbar {
+    width: calc(100% - 322px);
+  }
+  .messages {
+    width: calc(100% - 322px);
+  }
+  .textarea {
+    .textinput {
+      width: calc(100% - 350px);
+    }
+  }
 }
