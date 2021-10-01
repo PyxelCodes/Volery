@@ -10,11 +10,11 @@ $input-height: 40px;
 
   padding: 40px;
   .textinput {
-      width: calc(100% - 240px - 350px);
-      z-index: 10;
+    width: calc(100% - 240px - 350px);
+    z-index: 10;
     bottom: 10px;
     position: fixed;
-    background-color: #40444B;
+    background-color: #40444b;
     max-height: 400px;
     border-radius: 10px;
     height: $input-height;
@@ -47,7 +47,31 @@ $input-height: 40px;
   outline: none;
   font: 100% 'Manrope';
   color: #fff;
-  background-color: #40444B;
+  background-color: #40444b;
   line-height: 22px;
   border: none;
+}
+
+.autosuggest {
+  position: fixed;
+  bottom: 140px;
+  color: #fff;
+  background-color: #2f3136;
+  .suggestheader {
+    display: inline-flex;
+  }
+
+  .emoji-row {
+    padding: 0 8px;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 500;
+    .selectable {
+      padding: 4px 8px;
+      .autocomplete-content {
+        display: inline-flex;
+        align-items: center;
+      }
+    }
+  }
 }

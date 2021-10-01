@@ -5,6 +5,7 @@ import { createMessage } from '../../lib/createMessage';
 import { UserStateContext } from '../ws/UserStateProvider';
 import { useScreenType } from './hooks/useScreenType';
 import { TextBoxComponent } from '@syncfusion/ej2-react-inputs';
+import { EmojiSuggestions } from './EmojiSuggestions';
 
 export const TextArea = () => {
   let context = useContext(UserStateContext);
@@ -50,13 +51,18 @@ export const TextArea = () => {
     });
   };
 
+
+  let [msg, setMsg] = useState('');
+
   return (
     <div className="textarea">
+      <EmojiSuggestions str={msg} />
       <div className="textinput">
         <form onSubmit={handleSubmit}>
           <TextInput
             channelName={currentChannel.name}
             onSubmit={handleSubmit}
+            setMsg={setMsg}
           />
         </form>
       </div>
@@ -65,7 +71,7 @@ export const TextArea = () => {
 };
 
 class TextInput extends Component<
-  { channelName: string; onSubmit: Function },
+  { channelName: string; onSubmit: Function, setMsg: Function },
   {}
 > {
   channelName: string;
@@ -110,5 +116,6 @@ class TextInput extends Component<
       30 + (lines - 1) * 22
     }px`;
     this.container.style.height = `${40 + (lines - 1) * 22}px`;
+    this.props.setMsg(this.textareaObj.respectiveElement.value);
   }
 }

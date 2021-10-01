@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { UserStateContext } from '../ws/UserStateProvider';
+import { RoleMemberMap } from './RoleMemberMap';
 
 export const MemberList = () => {
   let { currentCommunity } = useContext(UserStateContext);
@@ -38,8 +39,8 @@ export const MemberList = () => {
       <div className="members">
         <div className="content">
           {
-            memberListObjectWithRoles.map(x => {
-              return <RoleMemberMap />
+            memberListObjectWithRoles.online?.map(x => {
+              return <RoleMemberMap key={`member-${x.id}`} role="online" />
             })
           }
           <div />

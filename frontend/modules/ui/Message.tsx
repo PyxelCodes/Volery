@@ -8,16 +8,6 @@ export const Message = ({ msg, inline }) => {
   return (
     <li
       id={`message-${msg.id}`}
-      onMouseEnter={() =>
-        document
-          .getElementById(`message-${msg.id}`)
-          .classList.add('message-hover')
-      }
-      onMouseLeave={() =>
-        document
-          .getElementById(`message-${msg.id}`)
-          .classList.remove('message-hover')
-      }
     >
       <div className={`message ${inline ? 'inline' : ''}`}>
         <div className="contents">

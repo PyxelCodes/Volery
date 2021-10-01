@@ -15,12 +15,25 @@ export const Messages = () => {
 
   let { conn } = useContext(WebSocketContext);
 
+  let scrollDiv = useRef(null)
+
   let [loading, setLoading] = useState(true);
+
+  useEffect(() => { // scroll listener
+    let onScroll = () => {
+      console.log(scrollDiv.current.scrollTop)
+    }
+    scrollDiv.current.addEventListener('scroll', onScroll);
+    return () => {
+      console.log(scrollDiv.current)
+      scrollDiv.current.removeEventListener('scroll', onScroll)
+    }
+  }, [scrollDiv])
 
   useEffect(() => {
     let onMessageCreate = msg => {
       if (msg.author.username == user.username) return;
-      if(currentChannel.id !== msg.channel_id) return;
+      if (currentChannel.id !== msg.channel_id) return;
       setCurrentChannelMessages(old => [...old, msg]);
     };
 
@@ -29,6 +42,11 @@ export const Messages = () => {
 
     fetchMessagesFor(currentChannel.id).then(x => {
       setCurrentChannelMessages(x);
+      console.log(
+        `%c[MessageManager]`,
+        'color: purple;',
+        `fetched messages for ${currentChannel.id}`
+      );
       setLoading(false);
     });
 
@@ -37,14 +55,9 @@ export const Messages = () => {
     };
   }, [currentChannel, setCurrentChannelMessages, conn, user]);
 
-  useEffect(() => {
-    let doc = document.getElementsByClassName('messages')[0];
-    doc.scrollTop = doc.scrollHeight;
-  }, [loading]);
-
   return (
     <div className="center">
-      <div className="messages">
+      <div className="messages" ref={scrollDiv}>
         <main className="chat-content">
           <MessageMap
             currentChannelMessages={currentChannelMessages}
@@ -90,8 +103,8 @@ export class MessageMap extends Component<
     );
   }
 
-  scrollToBottom() {
-    this.spacerdiv.scrollIntoView({ behavior: 'smooth' });
+  scrollToBottom(...args) {
+    this.spacerdiv.scrollIntoView(...args);
   }
 
   componentDidMount() {

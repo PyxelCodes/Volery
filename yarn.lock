@@ -1065,6 +1065,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node-emoji@npm:^1.8.1":
+  version: 1.8.1
+  resolution: "@types/node-emoji@npm:1.8.1"
+  checksum: c6be9052dced686b93a7ee9f0b1401321df9f44281c0084f0c506d256016bc9093defcad68d9083f5179e292a8794cb710d64e72ab4fb529fab032002fe6d5b5
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*":
   version: 16.9.4
   resolution: "@types/node@npm:16.9.4"
@@ -3418,6 +3425,7 @@ __metadata:
     "@mui/material": ^5.0.1
     "@types/js-cookie": ^2.2.7
     "@types/marked": ^3.0.1
+    "@types/node-emoji": ^1.8.1
     "@types/prismjs": ^1.16.6
     "@types/react": ^17.0.22
     "@types/react-loader-spinner": ^4.0.0
@@ -3432,6 +3440,7 @@ __metadata:
     nanoid: ^3.1.25
     next: 11.1.2
     next-transpile-modules: ^8.0.0
+    node-emoji: ^1.11.0
     prismjs: ^1.25.0
     react: 17.0.2
     react-collapsible: ^2.8.4
@@ -5005,6 +5014,15 @@ __metadata:
   bin:
     next: dist/bin/next
   checksum: c5a6d01b6d60de6e94bed11b199b8adb656521fed4abe0e816bec7991e8ff435006ef226ded40a0aecd277aa79e7d520e047c24bfb01521a12905b246ddd9177
+  languageName: node
+  linkType: hard
+
+"node-emoji@npm:^1.11.0":
+  version: 1.11.0
+  resolution: "node-emoji@npm:1.11.0"
+  dependencies:
+    lodash: ^4.17.21
+  checksum: e8c856c04a1645062112a72e59a98b203505ed5111ff84a3a5f40611afa229b578c7d50f1e6a7f17aa62baeea4a640d2e2f61f63afc05423aa267af10977fb2b
   languageName: node
   linkType: hard
 

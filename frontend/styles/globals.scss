@@ -21,6 +21,15 @@ body {
   top: 0;
 }
 
+.modal {
+  z-index: 10000 !important;
+  position: absolute;
+}
+
+.markdown a {
+  color: #23a4f4;
+}
+
 .loadh2 {
   font-family: Manrope, sans-serif !important;
 }

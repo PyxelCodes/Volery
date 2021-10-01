@@ -33,6 +33,7 @@ router.post('/:id/messages', async (req, res) => {
     let channel: any = await Channels.findOne({ id });
 
     if (!channel) return res.sendStatus(404)
+    if(content.length > 500) return res.sendStatus(400);
 
     let msg: any = {
         author: {
