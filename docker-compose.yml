@@ -6,9 +6,4 @@ services:
     build: ./api
     #environment: 
     ports:
-    - 4001:4001
-
-  frontend:
-    build: ./frontend
-    labels: 
-      volery.description: "Frontend Service"
+    - 80:80

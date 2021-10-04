@@ -1523,6 +1523,7 @@ __metadata:
     connect-mongo: 3.2.0
     cors: ^2.8.5
     crypto-js: ^4.1.1
+    dotenv: ^10.0.0
     express: ^4.17.1
     express-rate-limit: ^5.3.0
     express-session: ^1.17.2
@@ -2669,6 +2670,13 @@ __metadata:
   version: 1.2.0
   resolution: "domain-browser@npm:1.2.0"
   checksum: 8f1235c7f49326fb762f4675795246a6295e7dd566b4697abec24afdba2460daa7dfbd1a73d31efbf5606b3b7deadb06ce47cf06f0a476e706153d62a4ff2b90
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "dotenv@npm:10.0.0"
+  checksum: f412c5fe8c24fbe313d302d2500e247ba8a1946492db405a4de4d30dd0eb186a88a43f13c958c5a7de303938949c4231c56994f97d05c4bc1f22478d631b4005
   languageName: node
   linkType: hard
 
