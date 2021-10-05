@@ -40,7 +40,7 @@ export const MemberList = () => {
         <div className="content">
           {
             memberListObjectWithRoles.online?.map(x => {
-              return <RoleMemberMap key={`member-${x.id}`} role="online" />
+              return <RoleMemberMap key={`member-${x.id}`} role="online" roleObj={x} />
             })
           }
           <div />

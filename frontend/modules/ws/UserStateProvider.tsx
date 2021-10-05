@@ -37,6 +37,7 @@ export const UserStateProvider = ({ children }) => {
 
   let manageSetCurrentCommunity = (state) => {
     setCurrentCommunity(state);
+    setCurrentChannel(state.channels[0])
     localStorage.setItem('last-community', state.id)
   };
   let manageSetCurrentChannel = (state) => {

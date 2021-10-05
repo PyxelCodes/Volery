@@ -29,8 +29,9 @@ export default function Home() {
     let c = communities.find((x) => x.id == lastCommunity);
 
     if (!c) {
-      localStorage.removeItem("last-community");
-      localStorage.removeItem("last-channel");
+      let firstCommunity = communities[0];
+      setCurrentCommunity(firstCommunity);
+      setCurrentChannel(firstCommunity.channels[0])
     } else {
       setCurrentCommunity(c);
       console.log("found a community last in use, relaunching");

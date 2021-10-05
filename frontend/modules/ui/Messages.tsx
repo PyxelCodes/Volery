@@ -26,7 +26,7 @@ export const Messages = () => {
     scrollDiv.current.addEventListener('scroll', onScroll);
     return () => {
       console.log(scrollDiv.current)
-      scrollDiv.current.removeEventListener('scroll', onScroll)
+      scrollDiv?.current?.removeEventListener('scroll', onScroll)
     }
   }, [scrollDiv])
 
@@ -59,10 +59,15 @@ export const Messages = () => {
     <div className="center">
       <div className="messages" ref={scrollDiv}>
         <main className="chat-content">
-          <MessageMap
+         {
+         currentChannelMessages.length == 0 ?
+         <h2> wow such empty </h2>
+         :
+         <MessageMap
             currentChannelMessages={currentChannelMessages}
             loading={loading}
           />
+         }
         </main>
       </div>
       <TextArea />

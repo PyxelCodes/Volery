@@ -7,16 +7,11 @@ export const broadcastMessage = async (msg: any) => {
 
     // find the community_id for the message
 
-    console.log('after clientfetch', Date.now() - incoming)
-
     let community = await (communities.findOne({ channels: msg.channel_id }).select('id -_id'));
 
-    console.log(community)
-    console.log('after community', Date.now() - incoming)
 
 
     clients.forEach((client, i) => {
-        console.log('in loop', i, Date.now() - incoming)
         if (client.readyState !== 1) return;
         if (!client.authed) return;
         if (!client.user.communities.includes(community.id)) return;

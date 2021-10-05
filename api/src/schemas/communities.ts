@@ -7,5 +7,6 @@ export default model('communities', new Schema({
     owner_id: String,
     roles: Array,
     max_members: Number,
-    channels: Array
+    channels: Array,
+    members: Array,
 }))

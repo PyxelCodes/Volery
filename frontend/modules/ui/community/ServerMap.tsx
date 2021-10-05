@@ -1,10 +1,26 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { UserStateContext } from '../../ws/UserStateProvider';
+import { WebSocketContext } from '../../ws/WebSocketProvider';
 import { Community } from './Community';
 import { CreateCommunity } from './CreateCommunity';
 
 export const ServerMap = () => {
   let context = useContext(UserStateContext);
+  let wsContext = useContext(WebSocketContext);
+
+  useEffect(() => {
+    let onComunityCreate = c => {
+      console.log(c);
+      context.setCommunities(old => [...old, c]);
+    };
+
+    wsContext.conn.on('COMMUNITY_CREATE', onComunityCreate);
+
+    return () => {
+      wsContext.conn.off('COMMUNITY_CREATE', onComunityCreate);
+    };
+  }, [context, wsContext.conn]);
+
   return (
     <div className="servermap">
       {context.communities.length == 0 ? (

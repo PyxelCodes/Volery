@@ -70,7 +70,7 @@ export const authenticate = async (e: any, ws: any) => {
             }
         }
 
-        ws.send(JSON.stringify(helloSocket), (err: Error) => console.log(err))
+        ws.send(JSON.stringify(helloSocket), (err: Error) => { if(err) console.log(err) })
     }
     ws.off('message', authenticate);
 }

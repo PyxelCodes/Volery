@@ -1,29 +1,53 @@
-import React, { forwardRef } from "react";
-
-export interface InputProps extends React.ComponentPropsWithoutRef<"input"> {
-  textarea?: boolean;
-  rows?: number;
-  error?: string;
-  transparent?: boolean;
+import { Component } from 'react';
+import { ChangeEventHandler, FormEventHandler } from 'react';
+interface IInputProps {
+  id: string;
+  onSubmit: Function;
+  placeholder: string;
 }
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ className, textarea, error, transparent, ...props }, ref) => {
-    const bg = transparent ? `bg-transparent` : `bg-primary-700`;
-    const ring = error ? `ring-1 ring-secondary` : "";
-    const cn = `w-full py-2 px-4 rounded-8 text-primary-100 placeholder-primary-300 focus:outline-none ${bg} ${ring} ${className} `;
+export class Input extends Component<IInputProps, { value: string }> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: '',
+    };
 
-    return textarea ? (
-      <textarea
-        ref={ref as any}
-        className={cn}
-        data-testid="textarea"
-        {...(props as any)}
-      />
-    ) : (
-      <input ref={ref} className={cn} data-testid="input" {...props} />
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+  }
+
+  handleSubmit(event) {
+    if (
+      !this.state.value ||
+      !this.state.value.trim() ||
+      !this.state.value.replace(/[\u200B-\u200D\uFEFF]/g, '')
+    ) return event.preventDefault();
+      this.props.onSubmit(this.state.value);
+    this.setState({ value: '' });
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <div className="inputWrapper">
+          <input
+            className="input-default"
+            type="text"
+            value={this.state.value}
+            maxLength={100}
+            placeholder={this.props.placeholder}
+            onChange={this.handleChange}
+            id={this.props.id}
+            autoComplete="off"
+          />
+        </div>
+      </form>
     );
   }
-);
-
-Input.displayName = "Input";
+}

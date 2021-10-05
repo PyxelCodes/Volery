@@ -60,19 +60,23 @@ export default function Volery({ Component, pageProps }) {
 
   let router = useRouter();
 
-  return (<>
-    <title>Volery</title>
-    <Prepare>
-      <WaitForAuth router={router}>
-        <WebSocketProvider>
-          <WaitForWs>
-            <UserStateProvider>
-              <Component {...pageProps} />
-            </UserStateProvider>
-          </WaitForWs>
-        </WebSocketProvider>
-      </WaitForAuth>
-    </Prepare>
+  return (
+    <>
+      <Head>
+        <title>Volery</title>
+      </Head>
+
+      <Prepare>
+        <WaitForAuth router={router}>
+          <WebSocketProvider>
+            <WaitForWs>
+              <UserStateProvider>
+                <Component {...pageProps} />
+              </UserStateProvider>
+            </WaitForWs>
+          </WebSocketProvider>
+        </WaitForAuth>
+      </Prepare>
     </>
   );
 }

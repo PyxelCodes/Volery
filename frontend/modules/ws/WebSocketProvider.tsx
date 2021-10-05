@@ -26,8 +26,6 @@ export const WebSocketProvider = ({ children }) => {
 
   let authUser = JSON.parse(store.getState())
 
-  console.log(authUser)
-
   useEffect(() => {
     if (!conn && !isConnecting.current) {
       isConnecting.current = true;

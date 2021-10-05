@@ -21,9 +21,46 @@ body {
   top: 0;
 }
 
+.ReactModalPortal {
+  z-index: 9999999;
+}
+
 .modal {
-  z-index: 10000 !important;
-  position: absolute;
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: -7%;
+  margin-left: -5%;
+  margin-right: -5%;
+  .create-community-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+}
+
+.ReactModal__Content {
+  transform: scale(0.5);
+  transition: transform 200ms ease-in-out;
+}
+
+.ReactModal__Content--after-open{
+  transform: scale(1);
+}
+
+.ReactModal__Content--before-close{
+  transform: scale(0);
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open{
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+  opacity: 0;
 }
 
 .markdown a {
