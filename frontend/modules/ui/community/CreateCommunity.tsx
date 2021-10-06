@@ -8,7 +8,7 @@ import { APIRequest } from '../../fetch/APIRequest';
 
 export const CreateCommunity = () => {
   let [isOpen, setOpen] = useState(false);
-  let { user } = useContext(UserStateContext);
+  let { user, setCurrentCommunity, setCurrentChannel } = useContext(UserStateContext);
 
   let onClick = () => {
     setOpen(true);
@@ -31,6 +31,7 @@ export const CreateCommunity = () => {
       justifyContent: 'center',
       backgroundColor: '#272626',
       color: '#d8dee9',
+      border: 'none',
     },
   };
 
@@ -59,6 +60,11 @@ export const CreateCommunity = () => {
               } community`}
               onSubmit={(value) => {
                 APIRequest('/communities', { method: 'POST', body: { name: value } })
+                .then(x => {
+                  closeModal();
+                  setCurrentCommunity(x)
+                  setCurrentChannel(x.channels.find(x => x.type == 2)) // only use text channels lol
+                })
               }}
             />
           </div>

@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import ReconnectingWebSocket from "reconnecting-websocket";
+import logger from "../../lib/logger";
 import { AuthContext } from "./AuthUserContext";
 import { Connection, Listener, Opcode } from "./types";
 
@@ -7,11 +8,6 @@ const apiUrl = "wss://api.dogehouse.tv/socket";
 const heartbeatInterval = 41500;
 const connectionTimeout = 15000;
 
-const logger = (direction, opcode, data, fetchId, raw) => {
-    const directionPadded = direction.toUpperCase().padEnd(3, " ");
-    const fetchIdInfo = fetchId ? ` (fetch id ${fetchId})` : "";
-    console.info(`${directionPadded} "${opcode}"${fetchIdInfo}: ${raw}`);
-};
 
 export const connect = ({
     onConnectionTaken = () => { },
@@ -31,7 +27,6 @@ export const connect = ({
             const raw = `{"op":${opcode},"t":${Date.now()},"d":${JSON.stringify(data)}}`
 
             socket.send(raw);
-            logger('out', opcode, data, ref, raw)
         }
 
         const listeners: Listener[] = [];
@@ -124,7 +119,7 @@ export const connect = ({
                     socket.send(JSON.stringify({ op: 1 })); // HEARTBEAT
                     let onMessage = (m) => {
                         if (JSON.parse(m.data).op !== 11) return;
-                        console.log(`Heartbeat ack from gateway, latency: ${Date.now() - sentAt}ms`)
+                        logger('WebsocketConnectionManager', 'Heartbeat ACK from gateway, current ping:', `${Date.now() - sentAt}ms`)
                         socket.removeEventListener('message', onMessage)
                     };
                     socket.addEventListener('message', onMessage)

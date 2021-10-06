@@ -1,73 +1,71 @@
 import { useContext, useEffect, useState, useRef, Component } from 'react';
 import { fetchMessagesFor } from '../../lib/fetchMessagesFor';
+import msgs from '../stores/messages';
 import { UserStateContext } from '../ws/UserStateProvider';
 import { WebSocketContext } from '../ws/WebSocketProvider';
 import { Message } from './Message';
 import { TextArea } from './TextArea';
 
 export const Messages = () => {
-  let {
-    currentChannelMessages,
-    currentChannel,
-    user,
-    setCurrentChannelMessages,
-  } = useContext(UserStateContext);
+  let { currentChannel, user } = useContext(UserStateContext);
+
+  let [messages, setMessages] = useState(null);
 
   let { conn } = useContext(WebSocketContext);
 
-  let scrollDiv = useRef(null)
+  let scrollDiv = useRef(null);
 
   let [loading, setLoading] = useState(true);
 
-  useEffect(() => { // scroll listener
+  useEffect(() => {
+    // scroll listener
     let onScroll = () => {
-      console.log(scrollDiv.current.scrollTop)
-    }
+      //! infinteScroll here !!!
+    };
     scrollDiv.current.addEventListener('scroll', onScroll);
     return () => {
-      console.log(scrollDiv.current)
-      scrollDiv?.current?.removeEventListener('scroll', onScroll)
-    }
-  }, [scrollDiv])
+      scrollDiv?.current?.removeEventListener('scroll', onScroll); // eslint-ignore-line
+    };
+  }, [scrollDiv]);
 
   useEffect(() => {
     let onMessageCreate = msg => {
-      if (msg.author.username == user.username) return;
+      msgs.dispatch({ type: 'add_c_message', cid: currentChannel.id, msg })
       if (currentChannel.id !== msg.channel_id) return;
-      setCurrentChannelMessages(old => [...old, msg]);
+      setMessages(o => [...o, msg]);
     };
 
     setLoading(true);
     conn.on('MESSAGE_CREATE', onMessageCreate);
 
     fetchMessagesFor(currentChannel.id).then(x => {
-      setCurrentChannelMessages(x);
-      console.log(
-        `%c[MessageManager]`,
-        'color: purple;',
-        `fetched messages for ${currentChannel.id}`
-      );
+      setMessages(x);
       setLoading(false);
     });
 
     return function cleanup() {
       conn.off('MESSAGE_CREATE', onMessageCreate);
     };
-  }, [currentChannel, setCurrentChannelMessages, conn, user]);
+  }, [currentChannel, conn, user]); // eslint-ignore-line
 
   return (
     <div className="center">
       <div className="messages" ref={scrollDiv}>
         <main className="chat-content">
-         {
-         currentChannelMessages.length == 0 ?
-         <h2> wow such empty </h2>
-         :
-         <MessageMap
-            currentChannelMessages={currentChannelMessages}
-            loading={loading}
-          />
-         }
+          {loading ? (
+            <p> loading messages </p>
+          ) : (
+            <>
+              {messages.length == 0 ? (
+                <h2> wow such empty </h2>
+              ) : (
+                <MessageMap
+                  currentChannelMessages={messages}
+                  loading={loading}
+                />
+              )}
+            </>
+          )}
         </main>
       </div>
       <TextArea />

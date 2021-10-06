@@ -1,4 +1,5 @@
 import React, { useContext, useMemo, useState } from "react";
+import logger from "../../lib/logger";
 import { WebSocketContext } from "./WebSocketProvider";
 
 export const UserStateContext = React.createContext<{
@@ -37,11 +38,12 @@ export const UserStateProvider = ({ children }) => {
 
   let manageSetCurrentCommunity = (state) => {
     setCurrentCommunity(state);
-    setCurrentChannel(state.channels[0])
+    logger('Routing', 'changing to community', state.id, `(${state.name})`);
     localStorage.setItem('last-community', state.id)
   };
   let manageSetCurrentChannel = (state) => {
       setCurrentChannel(state)
+      logger('Routing', 'changing to channel', state.id, `(#${state.name})`)
       localStorage.setItem('last-channel', state.id)
   }
 

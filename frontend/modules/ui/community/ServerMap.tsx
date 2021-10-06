@@ -3,6 +3,8 @@ import { UserStateContext } from '../../ws/UserStateProvider';
 import { WebSocketContext } from '../../ws/WebSocketProvider';
 import { Community } from './Community';
 import { CreateCommunity } from './CreateCommunity';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import Link from 'next/link'
 
 export const ServerMap = () => {
   let context = useContext(UserStateContext);
@@ -10,7 +12,6 @@ export const ServerMap = () => {
 
   useEffect(() => {
     let onComunityCreate = c => {
-      console.log(c);
       context.setCommunities(old => [...old, c]);
     };
 
@@ -23,6 +24,16 @@ export const ServerMap = () => {
 
   return (
     <div className="servermap">
+      <div className="community-listitem">
+        <Link href="/channels/me" passHref>
+        <div className="community">
+          <div className="community-noicon-text">
+            <FavoriteIcon />
+          </div>
+        </div>
+        </Link>
+      </div>
+      <hr />
       {context.communities.length == 0 ? (
         <></>
       ) : (

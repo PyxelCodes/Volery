@@ -2,7 +2,6 @@ import emoji from 'node-emoji';
 
 export const EmojiSuggestions = ({ str }) => {
     return null;
-  console.log(str);
 
   let split = str.split(' ');
 

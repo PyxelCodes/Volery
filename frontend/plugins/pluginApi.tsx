@@ -1,4 +1,5 @@
 import React from "react"
+import messages from "../modules/stores/messages"
 import { SnowflakeUtil } from "./snowflake/SnowflakeUtil"
 import VoleryModules from "./VoleryModules"
 import WebpackModules from "./webpackmodules"
@@ -6,6 +7,9 @@ import WebpackModules from "./webpackmodules"
 export class VoleryApi {
     get VoleryModules() { return VoleryModules }
     get SnowflakeUtil() { return SnowflakeUtil }
+
+    // stores
+    get MessageStore() { return messages }
 
     plugins = []
 

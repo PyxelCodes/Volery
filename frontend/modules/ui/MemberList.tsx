@@ -32,8 +32,6 @@ export const MemberList = () => {
     }
   }
 
-  console.log(memberListObjectWithRoles);
-
   return (
     <aside className="membersWrapper">
       <div className="members">

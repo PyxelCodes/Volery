@@ -60,6 +60,21 @@ export default function Volery({ Component, pageProps }) {
 
   let router = useRouter();
 
+  if (Boolean(Component.noWs))
+    return (
+      <>
+        <Head>
+          <title>Volery</title>
+        </Head>
+
+        <Prepare>
+          <WaitForAuth router={router}>
+            <Component {...pageProps} />
+          </WaitForAuth>
+        </Prepare>
+      </>
+    );
+
   return (
     <>
       <Head>

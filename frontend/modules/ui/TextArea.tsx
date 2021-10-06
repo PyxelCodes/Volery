@@ -6,6 +6,7 @@ import { UserStateContext } from '../ws/UserStateProvider';
 import { useScreenType } from './hooks/useScreenType';
 import { TextBoxComponent } from '@syncfusion/ej2-react-inputs';
 import { EmojiSuggestions } from './EmojiSuggestions';
+import messages from '../stores/messages';
 
 export const TextArea = () => {
   let context = useContext(UserStateContext);
@@ -35,22 +36,22 @@ export const TextArea = () => {
 
     let nonce = nanoid(30);
 
-    setCurrentChannelMessages(old => [
-      ...old,
-      {
+    messages.dispatch({
+      type: 'add_message',
+      cid: currentChannel.id,
+      msg: {
         author: user,
         pending: true,
         content: message.trim(),
         created_at: Date.now(),
         nonce,
       },
-    ]);
+    });
 
     createMessage(message, context, nonce).then(msg => {
-      // messageWrapperRef.current.scrollIntoView();
+      //console.log(message, messages.getState())
     });
   };
-
 
   let [msg, setMsg] = useState('');
 
@@ -71,7 +72,7 @@ export const TextArea = () => {
 };
 
 class TextInput extends Component<
-  { channelName: string; onSubmit: Function, setMsg: Function },
+  { channelName: string; onSubmit: Function; setMsg: Function },
   {}
 > {
   channelName: string;

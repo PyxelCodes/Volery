@@ -63,8 +63,4 @@ export class WaitForAuth extends Component<{ children, router }, { authed }> {
 
     return this.props.children;
   }
-
-  componentDidUpdate() {
-    console.log(this.context, this.state);
-  }
 }
