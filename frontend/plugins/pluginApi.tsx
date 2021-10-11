@@ -13,9 +13,16 @@ export class VoleryApi {
 
     plugins = []
 
-    loadPlugin(id: string) {
+    async loadPlugin(id: string) {
+        if(this.plugins.findIndex(x => x.name == id) > -1) throw new Error(`Plugin '${id}' is already loaded`);
 
-    }
+        let plugin = await window.pluginLoader.loadPlugin(id);
+
+        this.plugins.push(plugin);
+
+        plugin.plugin();
+
+    } // handled by /public/pluginloader.js
 
     insertComponent(component: React.FC | React.Component, domNode: HTMLElement) {
         let childNode = document.createElement('div');
@@ -28,6 +35,8 @@ export class VoleryApi {
     }
 
     constructor() {
-        this.loadPlugin('test')
+        let script = document.createElement('script')
+        script.src = '/pluginloader.js';
+        document.head.appendChild(script);
     }
 }

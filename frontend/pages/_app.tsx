@@ -9,11 +9,15 @@ import '../styles/message.scss';
 import '../styles/textarea.scss';
 import '../styles/highlight.scss';
 import '../styles/memberList.scss';
+import '../styles/developers.scss';
 import { UserStateProvider } from '../modules/ws/UserStateProvider';
 import { WaitForAuth } from '../modules/ws/WaitForAuth';
 import { InitialLoadingPage } from '../modules/loader/InitialLoadingPage';
 import Modal from 'react-modal';
 import { useRouter } from 'next/router';
+import { UserClickable } from '../modules/ui/modals/UserClickable';
+import { UserPopoutProvider } from '../modules/ws/UserPopoutContext';
+import { useState } from 'react';
 
 declare global {
   export interface Window {
@@ -60,6 +64,8 @@ export default function Volery({ Component, pageProps }) {
 
   let router = useRouter();
 
+  let [top, setTop] = useState(0);
+
   if (Boolean(Component.noWs))
     return (
       <>
@@ -86,7 +92,10 @@ export default function Volery({ Component, pageProps }) {
           <WebSocketProvider>
             <WaitForWs>
               <UserStateProvider>
-                <Component {...pageProps} />
+                <UserPopoutProvider>
+                  <UserClickable />
+                  <Component {...pageProps} misc={{ top, setTop }} />
+                </UserPopoutProvider>
               </UserStateProvider>
             </WaitForWs>
           </WebSocketProvider>

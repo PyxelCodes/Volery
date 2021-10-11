@@ -1,9 +1,13 @@
+import { useContext } from 'react';
+import { UserPopoutContext } from '../ws/UserPopoutContext';
 import { MarkdownElement } from './md/MarkdownElement';
 
 export const Message = ({ msg, inline }) => {
   let d = new Date(msg.created_at);
 
   let dateString = `${d.toLocaleString()}`;
+
+  let { isOpen, setIsOpen, setId } = useContext(UserPopoutContext);
 
   return (
     <li
@@ -21,7 +25,7 @@ export const Message = ({ msg, inline }) => {
               />
               <h2 className="header">
                 <span className="headerText">
-                  <span className="displayName">
+                  <span className="displayName" onClick={() => { setIsOpen(!isOpen); setId(msg.author.id); }}>
                     {msg.author.displayName ?? msg.author.username}
                   </span>
                 </span>
