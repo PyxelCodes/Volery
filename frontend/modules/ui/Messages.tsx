@@ -17,11 +17,20 @@ export const Messages = () => {
 
   let [loading, setLoading] = useState(true);
 
+  let [isReq, setIsReq] = useState(false);
+
   useEffect(() => {
     // scroll listener
-    let onScroll = () => {
-      //! infinteScroll here !!!
+
+    let onScroll = (e) => {
+      let sTop = e.target.scrollTop;
+
+      if(sTop < 60) {
+        setIsReq(true)
+     //   fetchMessagesFor(currentChannel.id, { before: messages?.[0].id })
+      }
     };
+
     scrollDiv.current.addEventListener('scroll', onScroll);
     return () => {
       scrollDiv?.current?.removeEventListener('scroll', onScroll); // eslint-ignore-line
@@ -30,10 +39,27 @@ export const Messages = () => {
 
   useEffect(() => {
     let onMessageCreate = msg => {
-      msgs.dispatch({ type: 'add_c_message', cid: currentChannel.id, msg })
+      let s = msgs.getState();
+
+      if (s[currentChannel.id].find(x => x.nonce == msg.nonce)) {
+        msgs.dispatch({
+          type: 'set_message',
+          msg,
+        });
+      } else {
+        msgs.dispatch({ type: 'add_message', cid: currentChannel.id, msg });
+      }
+
       if (currentChannel.id !== msg.channel_id) return;
-      setMessages(o => [...o, msg]);
     };
+
+    msgs.subscribe(() => {
+      let state = msgs.getState()[currentChannel.id];
+
+      setMessages(o => {
+        return [...state];
+      });
+    });
 
     setLoading(true);
     conn.on('MESSAGE_CREATE', onMessageCreate);
@@ -92,6 +118,12 @@ export class MessageMap extends Component<
             if (i == 0) inline = false;
             if (arr[i - 1]?.author.username == msg.author.username)
               inline = true;
+
+            let Date1 = new Date(arr[i - 1]?.created_at);
+            let Date2 = new Date(msg?.created_at);
+
+            if ((Date2.getTime() - Date1.getTime()) > 2 * 1000 * 60)
+              inline = false;
 
             return <Message msg={msg} key={`msg-${i}`} inline={inline} />;
           })

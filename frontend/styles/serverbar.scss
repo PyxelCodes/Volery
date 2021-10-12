@@ -9,7 +9,8 @@
 }
 
 .servermap {
-  overflow: hidden scroll; 
+  overflow-y: auto; 
+  height: 100%;
   padding-right: 0px;
   padding-top: 12px;
   &::-webkit-scrollbar {
@@ -20,6 +21,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
   height: 48px;
   margin: 0 0 8px;
   &:hover {

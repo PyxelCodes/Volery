@@ -38,7 +38,7 @@ export const Message = ({ msg, inline }) => {
               </h2>
             </>
           )}
-          <div className="content">
+          <div className={`content ${msg.pending ? 'pending' : ''}`}>
             <MarkdownElement text={msg.content} />
           </div>
         </div>
